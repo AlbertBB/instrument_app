@@ -1,0 +1,10 @@
+<title>GuitarModel Predict App</title>
+{% if guitarName %}
+<h1>これは {{ guitarName }} です</h1>
+<div>
+  <img src="{{ image }}" />
+</div>
+<a href="./">トップへ戻る</a>
+{% else %}
+<a href="./">トップへ戻る</a>
+{% endif %}
