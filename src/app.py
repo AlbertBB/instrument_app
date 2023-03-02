@@ -8,7 +8,7 @@ import base64
 def predict(img):
     # ネットワークの準備
     net = Net().cpu().eval()
-    # # 学習済みモデルの重み（dog_cat.pt）を読み込み
+    # # 学習済みモデルの重み（instrument.pt）を読み込み
     net.load_state_dict(torch.load('./src/instrument.pt', map_location=torch.device('cpu')))
     #　データの前処理
     img = transform(img)
@@ -17,14 +17,14 @@ def predict(img):
     y = torch.argmax(net(img), dim=1).cpu().detach().numpy()
     return y
 
-#　推論したラベルから犬か猫かを返す関数
+#　推論したラベルからモデルを返す関数
 def getName(label):
     if label==0:
-        return 'ストラトキャスター'
-    elif label==1:
-        return 'テレキャスター'
-    elif label ==2:
         return 'レスポール'
+    elif label==1:
+        return 'ストラトキャスター'
+    elif label ==2:
+        return 'テレキャスター'
     
 # Flask のインスタンスを作成
 app = Flask(__name__)
